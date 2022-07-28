@@ -81,7 +81,12 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+  BSP_LED_Init(LED3);
+  BSP_LED_Init(LED4);
+  BSP_LED_Init(LED5);
+  BSP_LED_Init(LED6);
   BSP_ACCELERO_Init();
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -90,32 +95,36 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
   int16_t xyz[3]={0};
-  HAL_GPIO_WritePin(GPIOD,LD3_Pin,0); //Orange off
-  HAL_GPIO_WritePin(GPIOD,LD4_Pin,0); //Green off
-  HAL_GPIO_WritePin(GPIOD,LD5_Pin,0); //Red off
-  HAL_GPIO_WritePin(GPIOD,LD6_Pin,0); //Blue off
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  // x+ red
-      // x- green
-      // y+ orange
-      // y- blue
 	  BSP_ACCELERO_GetXYZ(xyz);
+	  printf("Received: %d, %d, %d", xyz[0],xyz[1],xyz[2]);
+
+	  BSP_LED_Off(LED3); //Orange OFF
+	  BSP_LED_Off(LED4); //Green OFF
+	  BSP_LED_Off(LED5); //Red OFF
+	  BSP_LED_Off(LED6); //Blue OFF
+
+	  // when x+ --> Red ON
+      // when x- --> Green ON
+      // when y+ --> Orange ON
+      // when y- --> Blue ON
+
 	  if (xyz[1]>0.0) {
-		  HAL_GPIO_TogglePin(GPIOD,LD3_Pin); //Orange
+		  BSP_LED_On(LED3); //Orange
 	  }
 	  else {
-		  HAL_GPIO_TogglePin(GPIOD,LD6_Pin); //Blue
+		  BSP_LED_On(LED6); //Blue
 	  }
 	  if (xyz[0]>0.0) {
-		  HAL_GPIO_TogglePin(GPIOD,LD5_Pin); //Red
+		  BSP_LED_On(LED5); //Red
 	  }
 	  else {
-		  HAL_GPIO_TogglePin(GPIOD,LD4_Pin); //Green
+		  BSP_LED_On(LED4); //Green
 	  }
     /* USER CODE END WHILE */
 

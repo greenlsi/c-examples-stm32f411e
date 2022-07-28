@@ -110,7 +110,7 @@ uint8_t BSP_ACCELERO_Init(void)
     Accelero_InitStructure.Power_Mode         = LSM303DLHC_NORMAL_MODE;
     Accelero_InitStructure.AccOutput_DataRate = LSM303DLHC_ODR_400_HZ; //Cambiar freq de muestro del acc
     Accelero_InitStructure.Axes_Enable        = LSM303DLHC_AXES_ENABLE;
-    Accelero_InitStructure.AccFull_Scale      = LSM303DLHC_FULLSCALE_8G;
+    Accelero_InitStructure.AccFull_Scale      = LSM303DLHC_FULLSCALE_8G; //Cambiar la sensibilidad del acc
     Accelero_InitStructure.BlockData_Update   = LSM303DLHC_BlockUpdate_Continous;
     Accelero_InitStructure.Endianness         = LSM303DLHC_BLE_LSB;
     Accelero_InitStructure.High_Resolution    = LSM303DLHC_HR_ENABLE;
@@ -152,7 +152,7 @@ uint8_t BSP_ACCELERO_Init(void)
     Accelero_InitStructure.Power_Mode         = LSM303AGR_NORMAL_MODE;
     Accelero_InitStructure.AccOutput_DataRate = LSM303AGR_ODR_400_HZ; //Cambiar freq de muestro del acc
     Accelero_InitStructure.Axes_Enable        = LSM303AGR_AXES_ENABLE;
-    Accelero_InitStructure.AccFull_Scale      = LSM303AGR_FULLSCALE_8G;
+    Accelero_InitStructure.AccFull_Scale      = LSM303AGR_FULLSCALE_8G; //Cambiar la sensibilidad del acc
     Accelero_InitStructure.BlockData_Update   = LSM303AGR_BlockUpdate_Continous;
     Accelero_InitStructure.Endianness         = LSM303AGR_BLE_LSB;
     Accelero_InitStructure.High_Resolution    = LSM303AGR_HR_ENABLE;
