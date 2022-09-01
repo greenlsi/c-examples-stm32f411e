@@ -463,6 +463,7 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
+	  __BKPT(0);
   }
   /* USER CODE END Error_Handler_Debug */
 }

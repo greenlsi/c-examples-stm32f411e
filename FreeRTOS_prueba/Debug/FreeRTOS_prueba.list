@@ -1341,8 +1341,10 @@ __STATIC_FORCEINLINE void __disable_irq(void)
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
   while (1)
- 8000b50:	e7fe      	b.n	8000b50 <Error_Handler+0x8>
-	...
+  {
+	  __BKPT(0);
+ 8000b50:	be00      	bkpt	0x0000
+ 8000b52:	e7fd      	b.n	8000b50 <Error_Handler+0x8>
 
 08000b54 <HAL_MspInit>:
 /* USER CODE END 0 */
